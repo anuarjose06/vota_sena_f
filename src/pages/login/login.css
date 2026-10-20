@@ -1,0 +1,443 @@
+
+/* ============ Variables ============ */
+:root {
+  --gris: #444444;
+  --texto-suave: #5f6660;
+  --borde: #d6dbd6;
+  --ancho-panel: 55%;      /* cada panel mide 55% y se solapan 10% (la curva) */
+  --solape: 10%;
+  --curva: 110px;
+  /* CAMBIO: easing más natural para el movimiento entre roles. */
+  --duracion: 3s;
+  --suave: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Reset de box-sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ============ Página ============ */
+.login-section {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #e8ede6;
+  font-family: var(--font-family-text);
+  color: var(--font-family-color);
+}
+
+.principal-container {
+  position: relative;
+  width: min(1180px, 100%);
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(20, 40, 10, 0.18);
+}
+
+/* ============ Panel del formulario (blanco con textura) ============ */
+.login-form-container {
+  position: relative;
+  isolation: isolate;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px 28px;
+  background: #fff;
+  overflow-y: visible;
+}
+
+.login-form-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url('/images/tile50-blanco.svg') repeat;
+  opacity: 0.55;
+  border-radius: inherit;
+}
+
+.logo-container {
+  text-align: center;
+}
+
+.logo-container img {
+  height: 150px;
+  width: auto;
+}
+
+.logo-container h1 {
+  margin: 12px 0 4px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.logo-container p {
+  margin: 0;
+  color: var(--font-color-secondary);
+  font-size: 0.95rem;
+}
+
+/* ---- Selector de rol (pestañas) ---- */
+.logo-container + div {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 4px;
+  background: #eaf0e8;
+  border-radius: 999px;
+}
+
+/* la pastilla verde que se desliza entre Aprendiz y Administrativo */
+.logo-container + div::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 4px;
+  width: calc(50% - 4px);
+  background: var(--primary-color);
+  border-radius: 999px;
+  /* CAMBIO: la pestaña activa se desliza con una curva más suave. */
+  transition: transform var(--duracion) var(--suave);
+}
+
+.administrativo .logo-container + div::before {
+  transform: translateX(100%);
+}
+
+
+
+/* ---- Campos ---- */
+.login-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.login-form-container form > div:first-child {
+  display: grid;
+  gap: 14px;
+}
+
+.login-form-container select,
+.login-form-container input {
+  width: 100%;
+  padding: 13px 14px;
+  font: inherit;
+  color: var(--font-color);
+  background: #fff;
+  border: 1.5px solid var(--borde);
+  border-radius: 10px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.login-form-container select:focus,
+.login-form-container input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 4px rgba(57, 169, 0, 0.18);
+}
+
+.login-form-container button[type='submit'] {
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.login-form-container button[type='submit']:hover {
+  background: var(--secondary-color);
+}
+
+.login-form-container button[type='submit']:active {
+  transform: scale(0.98);
+}
+
+.login-form-container button[type='submit']:focus-visible {
+  outline: 3px solid var(--secondary-color);
+  outline-offset: 3px;
+}
+
+.login-form-container form > div:nth-last-child(2) {
+  text-align: center;
+}
+
+.login-form-container form > div:nth-last-child(2) p {
+  margin: 12px 0 0;
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+}
+
+.login-form-container a {
+  color: var(--secondary-color);
+  font-weight: 600;
+}
+
+/* ---- Subtítulo + párrafo del final ---- */
+.login-form-container form > div:last-child {
+  margin-top: 6px;
+  padding-top: 18px;
+  border-top: 1px solid var(--borde);
+}
+
+.login-form-container form > div:last-child h2 {
+  margin: 0 0 6px;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.login-form-container form > div:last-child p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: var(--texto-suave)
+}
+
+/* ============ Panel informativo (verde / gris con textura) ============ */
+.login-panel-information {
+  position: relative;
+  isolation: isolate;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 32px;
+  min-height: 240px;
+  padding: 36px 28px;
+  color: #fff;
+}
+
+/* dos capas de textura: se cruzan con fundido al cambiar de rol */
+.login-panel-information::before,
+.login-panel-information::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-repeat: repeat;
+  transition: opacity var(--duracion) ease;
+}
+
+.login-panel-information::before {
+  background-image: url('/images/tile50-verde.svg');
+  opacity: 1;
+}
+
+.login-panel-information::after {
+  background-image: url('/images/tile50-gris.svg');
+  opacity: 0;
+}
+
+.administrativo .login-panel-information::before {
+  opacity: 0;
+}
+
+.administrativo .login-panel-information::after {
+  opacity: 1;
+}
+
+.login-panel-information-upper-while-zone h2 {
+  margin: 0 0 10px;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: capitalize;
+  color: white;
+}
+
+.login-panel-information-upper-while-zone p {
+  margin: 0;
+  max-width: 34ch;
+  font-size: 1.05rem;
+  line-height: 1.5;
+  color: white;
+}
+
+.social-icons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.social-icons a {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  border: 1.5px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+
+.social-icons a:hover,
+.social-icons a:focus-visible {
+  background: #fff;
+  color: var(--gris);
+  outline: none;
+}
+
+.social-icons .username {
+  flex-basis: 100%;
+  margin: 6px 0 0;
+  font-weight: 600;
+  color: white;
+}
+
+/* ============ Escritorio: los paneles intercambian de lado ============ */
+@media (min-width: 861px) {
+  .principal-container {
+    display: block;
+    /* CAMBIO: altura mínima; puede crecer con el contenido del formulario y sus errores. */
+    height: auto;
+    min-height: max(700px, min(760px, calc(100vh - 48px)));
+  }
+
+  .login-panel-information {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: var(--ancho-panel);
+    transition:
+      border-radius var(--duracion) var(--suave),
+      padding var(--duracion) var(--suave);
+  }
+
+  .login-form-container {
+    /* CAMBIO: permanece en el flujo para que sus errores aumenten la altura del contenedor. */
+    position: relative;
+    width: var(--ancho-panel);
+    /* CAMBIO: cubre la altura base del contenedor y crece si el formulario lo necesita. */
+    min-height: max(700px, min(760px, calc(100vh - 48px)));
+    margin-left: calc(100% - var(--ancho-panel));
+    padding: 40px 56px;
+    transition:
+      margin-left var(--duracion) var(--suave),
+      border-radius var(--duracion) var(--suave),
+      padding var(--duracion) var(--suave);
+  }
+
+  .login-panel-information {
+    min-height: 0;
+    padding-top: 56px;
+    padding-bottom: 48px;
+  }
+
+  /* Aprendiz: panel verde a la izquierda, formulario a la derecha */
+  .aprendiz .login-panel-information {
+    left: 0;
+    padding-left: 48px;
+    padding-right: calc(var(--solape) + 48px);
+  }
+
+  .aprendiz .login-form-container {
+    margin-left: calc(100% - var(--ancho-panel));
+    border-radius: var(--curva) 0 0 var(--curva);
+  }
+
+  /* Administrativo: formulario a la izquierda, panel gris a la derecha */
+  .administrativo .login-form-container {
+    margin-left: 0;
+    border-radius: 0 var(--curva) var(--curva) 0;
+  }
+
+  .administrativo .login-panel-information {
+    left: calc(100% - var(--ancho-panel));
+    padding-left: calc(var(--solape) + 48px);
+    padding-right: 48px;
+  }
+}
+
+/* ============ Entrada del contenido al cambiar de rol ============ */
+@keyframes aparecer-aprendiz {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes aparecer-administrativo {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.login-form-container form > div,
+.login-panel-information-upper-while-zone,
+.login-panel-information-lower-zone {
+  animation-duration: 0.5s;
+  animation-timing-function: var(--suave);
+  animation-fill-mode: both;
+}
+
+/* CAMBIO: nombres distintos reinician la entrada cada vez que cambia el rol. */
+.aprendiz .login-form-container form > div,
+.aprendiz .login-panel-information-upper-while-zone,
+.aprendiz .login-panel-information-lower-zone {
+  animation-name: aparecer-aprendiz;
+}
+
+.administrativo .login-form-container form > div,
+.administrativo .login-panel-information-upper-while-zone,
+.administrativo .login-panel-information-lower-zone {
+  animation-name: aparecer-administrativo;
+}
+
+.login-form-container form > div { animation-delay: 0.12s; }
+.login-form-container form > div:nth-child(2) { animation-delay: 0.18s; }
+.login-form-container form > div:nth-child(3) { animation-delay: 0.24s; }
+.login-form-container form > div:nth-child(4) { animation-delay: 0.3s; }
+.login-form-container form > div:nth-child(5) { animation-delay: 0.36s; }
+.login-panel-information-upper-while-zone { animation-delay: 0.12s; }
+.login-panel-information-lower-zone { animation-delay: 0.24s; }
+
+/* ============ Accesibilidad ============ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+  }
+}
+
+/* Oculta las flechas en Chrome, Safari, Edge y Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Oculta las flechas en Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
