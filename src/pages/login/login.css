@@ -306,24 +306,33 @@
 @media (min-width: 861px) {
   .principal-container {
     display: block;
-    /* CAMBIO: panel más alto, limitado al espacio visible cuando sea posible. */
-    height: max(700px, min(760px, calc(100vh - 48px)));
+    /* CAMBIO: altura mínima; puede crecer con el contenido del formulario y sus errores. */
+    height: auto;
+    min-height: max(700px, min(760px, calc(100vh - 48px)));
   }
 
-  .login-form-container,
   .login-panel-information {
     position: absolute;
     top: 0;
     bottom: 0;
     width: var(--ancho-panel);
     transition:
-      left var(--duracion) var(--suave),
       border-radius var(--duracion) var(--suave),
       padding var(--duracion) var(--suave);
   }
 
   .login-form-container {
+    /* CAMBIO: permanece en el flujo para que sus errores aumenten la altura del contenedor. */
+    position: relative;
+    width: var(--ancho-panel);
+    /* CAMBIO: cubre la altura base del contenedor y crece si el formulario lo necesita. */
+    min-height: max(700px, min(760px, calc(100vh - 48px)));
+    margin-left: calc(100% - var(--ancho-panel));
     padding: 40px 56px;
+    transition:
+      margin-left var(--duracion) var(--suave),
+      border-radius var(--duracion) var(--suave),
+      padding var(--duracion) var(--suave);
   }
 
   .login-panel-information {
@@ -340,13 +349,13 @@
   }
 
   .aprendiz .login-form-container {
-    left: calc(100% - var(--ancho-panel));
+    margin-left: calc(100% - var(--ancho-panel));
     border-radius: var(--curva) 0 0 var(--curva);
   }
 
   /* Administrativo: formulario a la izquierda, panel gris a la derecha */
   .administrativo .login-form-container {
-    left: 0;
+    margin-left: 0;
     border-radius: 0 var(--curva) var(--curva) 0;
   }
 
@@ -418,4 +427,17 @@
     animation-duration: 0.01ms !important;
     animation-delay: 0s !important;
   }
+}
+
+/* Oculta las flechas en Chrome, Safari, Edge y Opera */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Oculta las flechas en Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
