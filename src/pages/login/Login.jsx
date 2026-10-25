@@ -6,7 +6,7 @@ import { faFacebookF, faXTwitter, faInstagram, faYoutube, faLinkedinIn, faTiktok
 import { validateSelect, validateInput } from '../../utils/validators/authValidators';
 
 
-function Login() {
+function Login({ onLogin }) {
 
     {/* Estado para manejar el rol seleccionado (Aprendiz o Administrativo) */ }
     const [rol, setRol] = useState('Aprendiz');
@@ -110,8 +110,7 @@ function Login() {
             errorPassword === '' &&
             (!esAprendiz ? errorSelectRole === '' : true)
         ) {
-            // Aquí puedes agregar la lógica para enviar el formulario si no hay errores
-            console.log('Formulario enviado correctamente', { ...selectValues, ...inputValues });
+            onLogin();
         }
     };
     
