@@ -3,7 +3,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-family-text);
 }
 
 html {
@@ -12,16 +12,10 @@ html {
 
 body {
   background-color: #f8fafc;
-  color: #1e293b;
+  color: var(--font-color);
 }
 
 .bienestar-container {
-  --verde: #39a900;
-  --verde-osc: #2e7d32;
-  --gris: #d9d9d9;
-  --texto: #1a1a1a;
-  --texto-suave: #555;
-
   min-height: 100vh;
   display: flex;
   flex-direction: row;
@@ -44,16 +38,18 @@ body {
 .welcome-banner h2,h1 {
   font-size: 2.2rem;
   font-weight: 700;
-  color: #000000;
+  color: var(--font-color);
   margin-bottom: 0.25rem;
   letter-spacing: 0;
   padding-top: 0;
   padding: 3px 5px;
+  font-family: var(--font-family-heading);
 }
 
 .welcome-banner p {
-  color: #000000;
+  color: var(--font-color-secondary);
   font-size: 1.1rem;
+  font-family: var(--font-family-text);
 }
 
 .dashboard-grid {
@@ -85,26 +81,28 @@ body {
   font-size: 1.35rem;
   font-weight: 600;
   line-height: 1.25;
-  color: var(--texto);
+  color: var(--font-color);
+  font-family: var(--font-family-heading);
 }
 
 .bw-card-cabecera p {
   font-size: 0.95rem;
-  color: var(--texto-suave);
+  color: var(--font-color-secondary);
+  font-family: var(--font-family-text);
 }
 
 .bw-badge {
   flex: none;
   padding: 3px 16px;
   border-radius: 999px;
-  background: #007832;
+  background: var(--secondary-color);
   color: #ffffff;
   font-size: 0.88rem;
   font-weight: 500;
   transition: background 0.2s ease;
 }
 .bw-badge:hover {
-  background: #39a900;
+  background: var(--primary-color);
 }
 .bw-accion {
   all: unset;
@@ -120,7 +118,7 @@ body {
 }
 
 .bw-accion:focus-visible {
-  outline: 2px solid var(--verde-osc);
+  outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
   border-radius: 8px;
 }
@@ -133,12 +131,14 @@ body {
 .bw-accion-titulo {
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--texto);
+  color: var(--font-color);
+  font-family: var(--font-family-text);
 }
 
 .bw-accion-desc {
   font-size: 0.92rem;
-  color: var(--texto-suave);
+  color: var(--font-color-secondary);
+  font-family: var(--font-family-text);
 }
 
 .bw-accion-icono {
@@ -161,7 +161,7 @@ body {
 .bw-nota {
   margin-top: 10px;
   font-size: 0.9rem;
-  color: var(--texto-suave);
+  color: var(--font-color-secondary);
 }
 
 .bw-chips {
@@ -176,19 +176,21 @@ body {
   flex-direction: column;
   padding: 8px 16px;
   border-radius: 16px;
-  background: var(--gris);
+  background: color-mix(in srgb, var(--font-color-secondary) 18%, #ffffff);
   line-height: 1.25;
 }
 
 .bw-chip span {
   font-size: 0.88rem;
-  color: var(--texto-suave);
+  color: var(--font-color-secondary);
+  font-family: var(--font-family-text);
 }
 
 .bw-chip strong {
   font-size: 1rem;
   font-weight: 500;
-  color: var(--texto);
+  color: var(--font-color);
+  font-family: var(--font-family-text);
 }
 
 .bw-chip-ancho {
@@ -206,21 +208,22 @@ body {
   padding: 8px 20px;
   border: 0;
   border-radius: 999px;
-  background: var(--gris);
-  color: var(--texto);
+  background: color-mix(in srgb, var(--font-color-secondary) 18%, #ffffff);
+  color: var(--font-color);
   font: inherit;
   font-size: 0.92rem;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s ease;
+  font-family: var(--font-family-text);
 }
 
 .bw-btn:hover:not(:disabled) {
-  background: #bfe3a8;
+  background: color-mix(in srgb, var(--primary-color) 28%, #ffffff);
 }
 
 .bw-btn:focus-visible {
-  outline: 2px solid var(--verde-osc);
+  outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
 }
 

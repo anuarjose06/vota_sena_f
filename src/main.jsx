@@ -9,8 +9,7 @@ import Bienestar from './pages/home/home-Bienestar/HomeBienestar.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <splashScreen />
-    <Login />
+    
     <Bienestar />
   </StrictMode>,
 )

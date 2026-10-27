@@ -1,7 +1,7 @@
 /* Header redondo: flota sobre el contenido, a la derecha del sidebar */
 .bienestar-header,
 .bienestar-header * {
-  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: var(--font-family-text);
 }
 
 .bienestar-header {
@@ -44,7 +44,9 @@
   line-height: 1.3;
 }
 .green-title{
-  color: #39a900;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  font-weight: 700;
 }
 
 .logo-title {
@@ -52,12 +54,14 @@
   font-weight: 700;
   letter-spacing: 0;
   text-transform: uppercase;
-  color: #0f172a;
+  color: var(--font-color);
+  font-family: var(--font-family-heading);
 }
 
 .logo-subtitle {
   font-size: 0.98rem;
-  color: #475569;
+  color: var(--font-color-secondary);
+  font-family: var(--font-family-text);
 }
 
 /* ---------- Campana + caja del usuario ---------- */
@@ -77,17 +81,17 @@
   border: none;
   border-radius: 50%;
   background: transparent;
-  color: #1f2937;
+  color: var(--font-color);
   cursor: pointer;
   transition: background 0.2s ease;
 }
 
 .bell-btn:hover {
-  background: rgba(57, 169, 0, 0.15);
+  background: color-mix(in srgb, var(--primary-color) 15%, transparent);
 }
 
 .bell-btn:focus-visible {
-  outline: 2px solid #2e7d32;
+  outline: 2px solid var(--secondary-color);
   outline-offset: 2px;
 }
 
@@ -111,19 +115,21 @@
 .user-name {
   font-size: 1rem;
   font-weight: 600;
-  color: #111827;
+  color: var(--font-color);
+  font-family: var(--font-family-text);
 }
 
 .user-role {
   font-size: 0.88rem;
-  color: #64748b;
+  color: var(--font-color-secondary);
+  font-family: var(--font-family-text);
 }
 
 .user-avatar,
 .user-chevron {
   display: inline-flex;
   align-items: center;
-  color: #111827;
+  color: var(--font-color);
 }
 
 .bell-btn svg {
@@ -157,7 +163,7 @@
   display: block;
   width: 24px;
   height: 2px;
-  background-color: #334155;
+  background-color: var(--font-color-secondary);
   transition: 0.3s;
 }
 
