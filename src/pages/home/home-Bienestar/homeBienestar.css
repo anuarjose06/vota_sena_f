@@ -1,0 +1,250 @@
+/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+  scroll-padding-top: 7rem;
+}
+
+body {
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+.bienestar-container {
+  --verde: #39a900;
+  --verde-osc: #2e7d32;
+  --gris: #d9d9d9;
+  --texto: #1a1a1a;
+  --texto-suave: #555;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+}
+
+/* CONTENIDO PRINCIPAL */
+.main-content {
+  width: 100%;
+  margin: 0;
+  padding: 2.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.welcome-banner {
+  margin-bottom: 2.25rem;
+}
+
+.welcome-banner h2,h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #000000;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0;
+  padding-top: 0;
+  padding: 3px 5px;
+}
+
+.welcome-banner p {
+  color: #000000;
+  font-size: 1.1rem;
+}
+
+.dashboard-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 450px), 200px));
+  justify-content:space-evenly;
+  gap: 2rem;
+  align-items: center;
+}
+
+/* ---------- Tarjetas ---------- */
+.bw-card {
+  padding: 1.75rem 1.75rem 1.9rem;
+  border-radius: 34px 34px 44px 44px;
+  background: #fff;
+  box-shadow: 0 4px 0 -1px rgba(255, 255, 255, 0.55), 0 8px 16px rgba(0, 0, 0, 0.12);
+}
+
+.bw-card-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.bw-card-cabecera h3 {
+  margin: 0 0 6px;
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--texto);
+}
+
+.bw-card-cabecera p {
+  font-size: 0.95rem;
+  color: var(--texto-suave);
+}
+
+.bw-badge {
+  flex: none;
+  padding: 3px 16px;
+  border-radius: 999px;
+  background: #007832;
+  color: #ffffff;
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: background 0.2s ease;
+}
+.bw-badge:hover {
+  background: #39a900;
+}
+.bw-accion {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.bw-accion:focus-visible {
+  outline: 2px solid var(--verde-osc);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.bw-accion-texto {
+  display: flex;
+  flex-direction: column;
+}
+
+.bw-accion-titulo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.bw-accion-desc {
+  font-size: 0.92rem;
+  color: var(--texto-suave);
+}
+
+.bw-accion-icono {
+  flex: none;
+  color: #333;
+}
+
+.bw-icon {
+  width: 32px;
+  height: 32px;
+  display: block;
+}
+
+.bw-divisor {
+  border: 0;
+  border-top: 1px solid #444;
+  margin: 6px 0;
+}
+
+.bw-nota {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: var(--texto-suave);
+}
+
+.bw-chips {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.bw-chip {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+  border-radius: 16px;
+  background: var(--gris);
+  line-height: 1.25;
+}
+
+.bw-chip span {
+  font-size: 0.88rem;
+  color: var(--texto-suave);
+}
+
+.bw-chip strong {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--texto);
+}
+
+.bw-chip-ancho {
+  margin: 0 0 16px;
+  width: 78%;
+}
+
+.bw-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bw-btn {
+  padding: 8px 20px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--gris);
+  color: var(--texto);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.bw-btn:hover:not(:disabled) {
+  background: #bfe3a8;
+}
+
+.bw-btn:focus-visible {
+  outline: 2px solid var(--verde-osc);
+  outline-offset: 2px;
+}
+
+.bw-btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+
+.bienestar-columna {
+  flex: 3;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1612px) {
+  .main-content {
+    padding: 1.5rem 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bw-btn {
+    transition: none;
+  }
+}
