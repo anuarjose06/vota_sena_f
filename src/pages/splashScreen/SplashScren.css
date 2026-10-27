@@ -1,0 +1,381 @@
+
+/* ========================================
+   SPLASH SCREEN - VOTASENA
+======================================== */
+
+.splash-screen {
+  
+
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  padding: 24px 20px;
+  box-sizing: border-box;
+
+  /* CAMBIO: color de texto global (antes blanco) */
+  color: var(--font-color);
+  /* CAMBIO: fondo blanco opaco con textura, igual al panel del formulario del login */
+  background: #fff;
+
+  /* CAMBIO: fuente global (antes Arial) */
+  font-family: var(--font-family-text);
+  isolation: isolate;
+}
+
+/* CAMBIO: capa de textura blanca del login */
+.splash-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url('/images/tile50-blanco.svg') repeat;
+  opacity: 0.55;
+}
+
+/* ========================================
+   LOGO Y NOMBRE VOTASENA
+======================================== */
+
+.splash-brand {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  flex-shrink: 0;
+
+  opacity: 0;
+  animation: aparecer-logo 1s ease-out 0.2s forwards;
+}
+
+.splash-logo {
+  display: block;
+
+  /* CAMBIO: logo más grande */
+  width: clamp(100px, 15vh, 150px);
+  height: clamp(100px, 15vh, 150px);
+
+  object-fit: contain;
+
+  /* CAMBIO: resplandor verde (se vuelve a ver sobre fondo blanco) */
+  filter: drop-shadow(
+    0 0 15px rgba(57, 169, 0, 0.45)
+  );
+
+  animation: brillo-logo 2.5s ease-in-out 1.2s infinite;
+}
+
+.splash-wordmark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 5px 0 0;
+
+  /* CAMBIO: nombre más grande */
+  font-size: clamp(36px, 6vh, 58px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -2px;
+
+  opacity: 0;
+  animation: aparecer-nombre 0.8s ease-out 0.7s forwards;
+}
+
+/* CAMBIO: colores del nombre con variables globales */
+.splash-wordmark span {
+  color: var(--font-color);
+}
+
+.splash-wordmark strong {
+  color: var(--primary-color);
+}
+
+/* ========================================
+   TEXTO DE BIENVENIDA
+======================================== */
+
+.splash-welcome {
+  position: relative;
+  z-index: 2;
+
+
+  width: 100%;
+  max-width: 800px;
+
+  /* CAMBIO: sección bajada un poco más */
+  margin-top: clamp(24px, 5vh, 48px);
+
+  text-align: center;
+  flex-shrink: 0;
+
+  opacity: 0;
+  animation: aparecer-texto 0.8s ease-out 1.2s forwards;
+}
+
+.splash-welcome h2 {
+  margin: 0;
+
+  /* CAMBIO: color global (antes blanco) */
+  color: var(--font-color);
+
+  /* CAMBIO: letra más grande */
+  font-size: clamp(22px, 3.5vh, 34px);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.splash-welcome p {
+  margin: 10px 0 0;
+
+  /* CAMBIO: color secundario global (antes verde claro) */
+  color: var(--font-color-secondary);
+
+  /* CAMBIO: letra más grande */
+  font-size: clamp(14px, 2.1vh, 19px);
+  line-height: 1.5;
+}
+
+.splash-welcome h3 {
+  margin: 10px 0 0;
+
+  /* CAMBIO: color secundario de marca (antes --verde-brillo) */
+  color: var(--secondary-color);
+
+  /* CAMBIO: letra más grande */
+  font-size: clamp(19px, 2.9vh, 27px);
+  font-weight: 700;
+}
+
+/* ========================================
+   IMAGEN COMPLETA
+======================================== */
+
+.splash-footer {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  max-width: 1050px;
+
+  flex: 1;
+  min-height: 0;
+  margin-top: 12px;
+
+  opacity: 0;
+  animation: aparecer-ilustracion 1.2s ease-out 1.7s forwards;
+}
+
+.splash-footer-logos {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+
+  filter: drop-shadow(
+    0 8px 22px rgba(0, 0, 0, 0.2)
+  );
+}
+
+
+/* ========================================
+   SALIDA DEL SPLASH SCREEN
+======================================== */
+
+.splash-screen--finished {
+  pointer-events: none;
+  animation: salir-splash 0.6s ease-in forwards;
+}
+
+/* ========================================
+   ANIMACIONES
+======================================== */
+
+@keyframes aparecer-logo {
+  from {
+    opacity: 0;
+    transform: translateY(-25px) scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes aparecer-nombre {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+    letter-spacing: 5px;
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: -2px;
+  }
+}
+
+@keyframes aparecer-texto {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aparecer-ilustracion {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes brillo-logo {
+  0%,
+  100% {
+    filter: drop-shadow(
+      0 0 10px rgba(57, 169, 0, 0.3)
+    );
+  }
+
+  50% {
+    filter: drop-shadow(
+      0 0 23px rgba(89, 230, 91, 0.75)
+    );
+  }
+}
+
+@keyframes flotar-luz {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+
+  50% {
+    transform: translateY(-25px) scale(1.08);
+  }
+}
+
+@keyframes salir-splash {
+  from {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* ========================================
+   RESPONSIVE - CELULARES
+======================================== */
+
+@media (max-width: 600px) {
+  .splash-screen {
+    padding: 18px 14px;
+  }
+
+  .splash-brand {
+    margin-top: 5px;
+  }
+
+  .splash-welcome {
+    /* CAMBIO: sección bajada también en celulares */
+    margin-top: 32px;
+  }
+
+  .splash-welcome h2 {
+    max-width: 360px;
+    margin-inline: auto;
+  }
+
+  .splash-footer {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .splash-footer-logos {
+    object-fit: contain;
+  }
+}
+
+/* ========================================
+   PANTALLAS BAJAS
+======================================== */
+
+@media (max-height: 650px) {
+  .splash-screen {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  /* CAMBIO: tamaños y espacio ajustados en pantallas bajas */
+  .splash-logo {
+    width: 72px;
+    height: 72px;
+  }
+
+  .splash-wordmark {
+    font-size: 32px;
+  }
+
+  .splash-welcome {
+    margin-top: 16px;
+  }
+
+  .splash-welcome p {
+    margin-top: 4px;
+  }
+
+  .splash-welcome h3 {
+    margin-top: 4px;
+  }
+
+  .splash-footer {
+    margin-top: 5px;
+  }
+}
+
+/* ========================================
+   ACCESIBILIDAD
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .splash-screen *,
+  .splash-screen::before,
+  .splash-screen::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
