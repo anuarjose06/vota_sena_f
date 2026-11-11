@@ -2,81 +2,17 @@ import { useState, useEffect } from "react";
 import "./homeBienestar.css";
 import Headertop from "../../../components/Header/Header.jsx";
 import Sidebar from "../../../components/Sidebar/Sidebar.jsx";
-
-const Icon = ({ children }) => (
-  <svg
-    className="bw-icon"
-    viewBox="0 0 24 24"
-    fill="none"
-    stroke="currentColor"
-    strokeWidth="1.8"
-    strokeLinecap="round"
-    strokeLinejoin="round"
-    aria-hidden="true"
-  >
-    {children}
-  </svg>
-);
-
-const IconUserPlus = () => (
-  <Icon>
-    <circle cx="10" cy="8" r="3.5" />
-    <path d="M3.5 20c0-3.6 2.9-6.5 6.5-6.5" />
-    <path d="M18 9v6M15 12h6" />
-  </Icon>
-);
-const IconUpload = () => (
-  <Icon>
-    <path d="M12 15V4" />
-    <path d="M7.5 8.5L12 4l4.5 4.5" />
-    <path d="M4 15v4a1 1 0 001 1h14a1 1 0 001-1v-4" />
-  </Icon>
-);
-const IconStar = () => (
-  <Icon>
-    <path d="M12 3.5l2.6 5.4 5.9.8-4.3 4.1 1 5.9L12 16.9l-5.2 2.8 1-5.9L3.5 9.7l5.9-.8z" />
-  </Icon>
-);
-const IconListSearch = () => (
-  <Icon>
-    <path d="M5 4h10a1 1 0 011 1v4" />
-    <path d="M5 4a1 1 0 00-1 1v14a1 1 0 001 1h6" />
-    <path d="M7.5 8h5M7.5 11.5h3" />
-    <circle cx="16" cy="15.5" r="3" />
-    <path d="M18.2 17.7L21 20.5" />
-  </Icon>
-);
+import menuBienestar from "../../../components/Sidebar/menus/MenuBienestar.jsx";
+/* Iconos de FontAwesome para las acciones del panel */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserPlus, faUpload, faStar, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+import Tarjeta from "./components/tarjeta/Tarjeta.jsx";
+import Accion from "./components/accion/Accion.jsx";
+import TarjetaGlobal from "../../../components/tarjetaGlobal/Tarjetaglobal.jsx";
 
 const USUARIO = { nombre: "Consuelo casas", rol: "Bienestar" };
 
-function Accion({ icono, titulo, descripcion }) {
-  return (
-    <button type="button" className="bw-accion">
-      <span className="bw-accion-texto">
-        <span className="bw-accion-titulo">{titulo}</span>
-        <span className="bw-accion-desc">{descripcion}</span>
-      </span>
-      <span className="bw-accion-icono">{icono}</span>
-    </button>
-  );
-}
-
-function Tarjeta({ titulo, etiqueta, descripcion, children }) {
-  return (
-    <section className="bw-card">
-      <div className="bw-card-cabecera">
-        <div>
-          <h3>{titulo}</h3>
-          <p>{descripcion}</p>
-        </div>
-        <span className="bw-badge">{etiqueta}</span>
-      </div>
-      {children}
-    </section>
-  );
-}
-
-export default function Bienestar() {
+function Bienestar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [votacionAbierta, setVotacionAbierta] = useState(true);
 
@@ -93,7 +29,7 @@ export default function Bienestar() {
   return (
     <div className="bienestar-container">
       {/* BARRA LATERAL (en móvil se abre con el botón hamburguesa) */}
-      <Sidebar menuOpen={menuOpen} onNavigate={cerrarMenu} />
+      <Sidebar menuOpen={menuOpen} onNavigate={cerrarMenu} links={menuBienestar} />
 
       <div className="bienestar-columna">
         <Headertop
@@ -119,13 +55,13 @@ export default function Bienestar() {
               descripcion="Agregar, actualizar o importar listado de aprendices habilitados para votar"
             >
               <Accion
-                icono={<IconUserPlus />}
+                icono={<FontAwesomeIcon icon={faUserPlus} />}
                 titulo="Nuevo aprendiz"
                 descripcion="Registro individual de aprendices con datos básicos"
               />
               <hr className="bw-divisor" />
               <Accion
-                icono={<IconUpload />}
+                icono={<FontAwesomeIcon icon={faUpload} />}
                 titulo="Carga masiva"
                 descripcion="Sube un archivo con varios aprendices."
               />
@@ -152,13 +88,13 @@ export default function Bienestar() {
                 </div>
               </div>
               <Accion
-                icono={<IconStar />}
+                icono={<FontAwesomeIcon icon={faStar} />}
                 titulo="Postular nuevo candidato"
                 descripcion="Selecciona y postula aprendices como candidatos para la votación."
               />
               <hr className="bw-divisor" />
               <Accion
-                icono={<IconListSearch />}
+                icono={<FontAwesomeIcon icon={faMagnifyingGlass} />}
                 titulo="Ver lista de postulados"
                 descripcion="Consulta y edita la información de los postulados."
               />
@@ -206,9 +142,12 @@ export default function Bienestar() {
                 </button>
               </div>
             </Tarjeta>
+            <TarjetaGlobal />
           </div>
         </main>
       </div>
     </div>
   );
 }
+
+export default Bienestar;

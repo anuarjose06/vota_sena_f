@@ -3,7 +3,7 @@ import './login.css';
 import BotonRol from './components/BotonRol';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebookF, faXTwitter, faInstagram, faYoutube, faLinkedinIn, faTiktok } from '@fortawesome/free-brands-svg-icons';
-import { validateSelect, validateInput } from '../../utils/validators/authValidators';
+import { validateSelect, validateInput } from '../../utils';
 
 
 function Login() {

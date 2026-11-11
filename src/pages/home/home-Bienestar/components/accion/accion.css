@@ -1,0 +1,41 @@
+.bw-accion {
+  all: unset;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 10px 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.bw-accion:focus-visible {
+  outline: 2px solid var(--secondary-color);
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+.bw-accion-texto {
+  display: flex;
+  flex-direction: column;
+}
+
+.bw-accion-titulo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--font-color);
+  font-family: var(--font-family-text);
+}
+
+.bw-accion-desc {
+  font-size: 0.92rem;
+  color: var(--font-color-secondary);
+  font-family: var(--font-family-text);
+}
+
+.bw-accion-icono {
+  flex: none;
+  color: #333;
+}
