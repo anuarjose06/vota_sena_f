@@ -11,6 +11,6 @@ import RecoverPassword from './pages/recoverPassword/RecoverPassword.jsx'
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     
-    <RecoverPassword />
+    <Bienestar />
   </StrictMode>,
 )

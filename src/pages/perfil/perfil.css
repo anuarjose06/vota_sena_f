@@ -1,0 +1,80 @@
+.perfil-contenedor {
+    width: 100%;
+    min-height: 100%;
+    padding: 25px 30px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    background-image: linear-gradient(to bottom, transparent 0px, transparent 31px, rgba(57, 169, 0, 0. 0.6) 32px);
+}
+
+.perfil-titulo {
+    margin-bottom: 22px;
+}
+
+.pefil-titulo h1 {
+    font-size: 25px;
+    color: var(--font-color-secondary);
+    font-family: var(--font-family-heading);
+    margin: 0 0 7px;
+}
+
+.perfil-titulo p {
+    font-size: 13px;
+    color: var(--font-color-secondary);
+    font-family: var(--font-family-text);
+    margin: 0;
+}
+
+.perfil-cabecera {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #dfe5dc;
+    margin-bottom: 22px;
+}
+
+.perfil-foto {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background-color: color-mix(in srgb, var(--primary-color) 15%, #ffffff);
+    border: 2px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.perfil-foto span {
+    font-size: 29px;
+    font-weight: 600;
+    color: var(--primary-color);
+    font-family: var(--font-family-heading);
+}
+
+/*Datos principales*/
+.perfil-identidad  h2 {
+    font-size: 1.3rem;
+    color: var(--font-color-secondary);
+    font-family: var(--font-family-text);
+    margin: 0 0 6px;
+}
+
+.perfil-identidad p {
+    font-size: 0.9 rem;
+    color: var(--font-color-secondary);
+    font-family: var(--font-family-text);
+    margin: 0 0 10px;
+}
+
+.perfil-estado {
+    display: inline-block;
+    padding: 4px 15px;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--primary-color) 15%, #ffffff);
+    color: var(--secondary-color);
+    font-size: 0.8rem;
+    font-weight: 500;
+    font-family: var(--font-family-text);
+}
