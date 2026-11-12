@@ -1,80 +1,340 @@
+/* ---------- Contenedor principal ---------- */
 .perfil-contenedor {
-    width: 100%;
-    min-height: 100%;
-    padding: 25px 30px;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    background-image: linear-gradient(to bottom, transparent 0px, transparent 31px, rgba(57, 169, 0, 0. 0.6) 32px);
+  width: 100%;
+  max-width: 1050px;
+  margin: 30px auto;
+  padding: 30px;
+  box-sizing: border-box;
+  color: var(--font-color);
+
+  background-color: #fff;
+  background-image: url("/images/tile50-blanco.svg");
+  background-repeat: repeat;
+  border-radius: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
+/* ---------- Título ---------- */
 .perfil-titulo {
-    margin-bottom: 22px;
+  max-width: 950px;
+  margin: 0 auto 25px;
 }
 
-.pefil-titulo h1 {
-    font-size: 25px;
-    color: var(--font-color-secondary);
-    font-family: var(--font-family-heading);
-    margin: 0 0 7px;
+.perfil-titulo h1 {
+  margin: 0 0 8px;
+  color: var(--font-color);
+  font-family: var(--font-family-heading);
+  font-size: 2rem;
 }
 
 .perfil-titulo p {
-    font-size: 13px;
-    color: var(--font-color-secondary);
-    font-family: var(--font-family-text);
-    margin: 0;
+  margin: 0;
+  color: var(--font-color-secondary);
+  font-family: var(--font-family-text);
 }
 
+/* ---------- Contenedor de perfil ---------- */
+.perfil-tarjeta {
+  width: 100%;
+  max-width: 950px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+/* ---------- Cabecera del perfil ---------- */
 .perfil-cabecera {
-    display: flex;
-    align-items: center;
-    gap: 22px;
-    padding-bottom: 22px;
-    border-bottom: 1px solid #dfe5dc;
-    margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
 .perfil-foto {
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    background-color: color-mix(in srgb, var(--primary-color) 15%, #ffffff);
-    border: 2px solid var(--primary-color);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+  width: 85px;
+  height: 85px;
+  min-width: 85px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--secondary-color);
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 600;
 }
 
-.perfil-foto span {
-    font-size: 29px;
-    font-weight: 600;
-    color: var(--primary-color);
-    font-family: var(--font-family-heading);
-}
-
-/*Datos principales*/
-.perfil-identidad  h2 {
-    font-size: 1.3rem;
-    color: var(--font-color-secondary);
-    font-family: var(--font-family-text);
-    margin: 0 0 6px;
+.perfil-identidad h2 {
+  margin: 0 0 6px;
+  color: var(--font-color);
+  font-family: var(--font-family-heading);
 }
 
 .perfil-identidad p {
-    font-size: 0.9 rem;
-    color: var(--font-color-secondary);
-    font-family: var(--font-family-text);
-    margin: 0 0 10px;
+  margin: 0 0 10px;
+  color: var(--font-color-secondary);
 }
 
 .perfil-estado {
-    display: inline-block;
-    padding: 4px 15px;
-    border-radius: 999px;
-    background: color-mix(in srgb, var(--primary-color) 15%, #ffffff);
-    color: var(--secondary-color);
-    font-size: 0.8rem;
-    font-weight: 500;
-    font-family: var(--font-family-text);
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 20px;
+  background: var(--secondary-color);
+  color: #fff;
+  font-size: 0.85rem;
+}
+
+/* ---------- Tarjeta global ---------- */
+.perfil-tarjeta .bw-card {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.perfil-tarjeta .bw-card-cabecera {
+  margin-bottom: 30px;
+}
+
+.perfil-tarjeta .bw-card-cabecera h3 {
+  margin-bottom: 10px;
+}
+
+.perfil-tarjeta .bw-card-cabecera p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ---------- Información personal ---------- */
+.perfil-formulario {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px 22px;
+}
+
+.perfil-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.perfil-campo label {
+  margin: 0;
+  color: var(--font-color);
+  font-family: var(--font-family-text);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.perfil-valor {
+  min-height: 45px;
+  margin: 0;
+  padding: 12px 15px;
+  box-sizing: border-box;
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.045);
+  color: var(--font-color);
+  font-family: var(--font-family-text);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  overflow-wrap: anywhere;
+}
+
+.perfil-campo input {
+  width: 100%;
+  min-height: 45px;
+  padding: 12px 15px;
+  box-sizing: border-box;
+  border: 1px solid #d8d8d8;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--font-color);
+  font: inherit;
+  outline: none;
+}
+
+.perfil-campo input:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+}
+
+/* ---------- Botones ---------- */
+.perfil-botones {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin-top: 5px;
+}
+
+.perfil-btn-principal,
+.perfil-btn-secundario {
+  padding: 11px 24px;
+  border: none;
+  border-radius: 999px;
+  font-family: var(--font-family-text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.perfil-btn-principal {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.perfil-btn-principal:hover {
+  background: var(--secondary-color);
+}
+
+.perfil-btn-secundario {
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--font-color);
+}
+
+.perfil-btn-secundario:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.perfil-acciones {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 15px;
+  margin-top: 25px;
+}
+
+.perfil-mensaje {
+  margin: 18px 0 0;
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+}
+
+/* ---------- Ventana cambiar contraseña ---------- */
+.perfil-modal-fondo {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, 0.55);
+}
+
+.perfil-modal {
+  width: 100%;
+  max-width: 550px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 28px;
+  box-sizing: border-box;
+  border-radius: 25px;
+  background: #fff;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+}
+
+.perfil-modal-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.perfil-modal-cabecera h2 {
+  margin: 0;
+  color: var(--font-color);
+  font-family: var(--font-family-heading);
+}
+
+.perfil-modal-cerrar {
+  width: 35px;
+  height: 35px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.08);
+  color: var(--font-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.perfil-modal > p {
+  margin: 12px 0 25px;
+  color: var(--font-color-secondary);
+}
+
+.perfil-modal .perfil-formulario {
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.perfil-mostrar-contrasena {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 18px;
+  color: var(--font-color);
+  font-size: 0.9rem;
+}
+
+.perfil-mostrar-contrasena input {
+  accent-color: var(--primary-color);
+}
+
+/* ---------- Adaptación a celulares ---------- */
+@media (max-width: 650px) {
+  .perfil-contenedor {
+    padding: 18px;
+    margin: 15px auto;
+  }
+
+  .perfil-titulo h1 {
+    font-size: 1.6rem;
+  }
+
+  .perfil-cabecera {
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .perfil-foto {
+    width: 65px;
+    height: 65px;
+    min-width: 65px;
+    font-size: 1.4rem;
+  }
+
+  .perfil-identidad h2 {
+    font-size: 1.1rem;
+  }
+
+  .perfil-formulario {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .perfil-botones {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .perfil-botones button {
+    width: 100%;
+  }
+
+  .perfil-acciones {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .perfil-acciones button {
+    width: 100%;
+  }
 }
