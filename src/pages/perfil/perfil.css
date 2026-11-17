@@ -1,4 +1,5 @@
-/* ---------- Contenedor principal ---------- */
+/* ---------- CONTENEDOR PRINCIPAL ---------- */
+
 .perfil-contenedor {
   width: 100%;
   max-width: 1050px;
@@ -7,14 +8,13 @@
   box-sizing: border-box;
   color: var(--font-color);
 
-  background-color: #fff;
+  background-color: #ffffff;
   background-image: url("/images/tile50-blanco.svg");
   background-repeat: repeat;
+
   border-radius: 30px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
-
-/* ---------- Título ---------- */
 .perfil-titulo {
   max-width: 950px;
   margin: 0 auto 25px;
@@ -33,7 +33,6 @@
   font-family: var(--font-family-text);
 }
 
-/* ---------- Contenedor de perfil ---------- */
 .perfil-tarjeta {
   width: 100%;
   max-width: 950px;
@@ -43,14 +42,13 @@
   gap: 22px;
 }
 
-/* ---------- Cabecera del perfil ---------- */
 .perfil-cabecera {
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 22px;
   border-radius: 22px;
-  background: #fff;
+  background: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
@@ -63,7 +61,7 @@
   align-items: center;
   border-radius: 50%;
   background: var(--secondary-color);
-  color: #fff;
+  color: #ffffff;
   font-size: 1.8rem;
   font-weight: 600;
 }
@@ -84,15 +82,17 @@
   padding: 5px 14px;
   border-radius: 20px;
   background: var(--secondary-color);
-  color: #fff;
+  color: #ffffff;
   font-size: 0.85rem;
 }
 
-/* ---------- Tarjeta global ---------- */
 .perfil-tarjeta .bw-card {
   width: 100%;
   box-sizing: border-box;
-}
+
+  background: #ffffff;
+  background-image: none;
+} 
 
 .perfil-tarjeta .bw-card-cabecera {
   margin-bottom: 30px;
@@ -107,7 +107,6 @@
   line-height: 1.5;
 }
 
-/* ---------- Información personal ---------- */
 .perfil-formulario {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -118,6 +117,8 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  min-width: 0;
+  background: transparent;
 }
 
 .perfil-campo label {
@@ -134,34 +135,64 @@
   padding: 12px 15px;
   box-sizing: border-box;
   border-radius: 12px;
-  background: rgba(0, 0, 0, 0.045);
+
+  background: #f1f1f1 !important;
+  background-image: none !important;
+
   color: var(--font-color);
   font-family: var(--font-family-text);
   font-size: 0.95rem;
+
   display: flex;
   align-items: center;
   overflow-wrap: anywhere;
 }
 
-.perfil-campo input {
+.perfil-contenedor .perfil-campo input,
+.perfil-modal .perfil-campo input {
+  display: block;
   width: 100%;
+  height: 45px;
   min-height: 45px;
   padding: 12px 15px;
   box-sizing: border-box;
-  border: 1px solid #d8d8d8;
+
+  color: #333333 !important;
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+
+  border: 1px solid #d1d5db !important;
   border-radius: 12px;
-  background: #fff;
-  color: var(--font-color);
-  font: inherit;
+
+  font-family: var(--font-family-text);
+  font-size: 0.95rem;
+  font-weight: normal;
+
   outline: none;
+  box-shadow: none !important;
+  opacity: 1 !important;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
-.perfil-campo input:focus {
-  border-color: var(--secondary-color);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+.perfil-contenedor .perfil-campo input:focus,
+.perfil-modal .perfil-campo input:focus {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+
+  border: 1px solid var(--secondary-color) !important;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 120, 50, 0.12) !important;
 }
 
-/* ---------- Botones ---------- */
+.perfil-contenedor .perfil-campo input::placeholder,
+.perfil-modal .perfil-campo input::placeholder {
+  color: #9ca3af !important;
+  opacity: 1;
+}
+
 .perfil-botones {
   width: 100%;
   display: flex;
@@ -185,7 +216,7 @@
 
 .perfil-btn-principal {
   background: var(--primary-color);
-  color: #fff;
+  color: #ffffff;
 }
 
 .perfil-btn-principal:hover {
@@ -208,14 +239,12 @@
   gap: 15px;
   margin-top: 25px;
 }
-
 .perfil-mensaje {
   margin: 18px 0 0;
   color: var(--secondary-color);
   font-size: 0.9rem;
 }
 
-/* ---------- Ventana cambiar contraseña ---------- */
 .perfil-modal-fondo {
   position: fixed;
   inset: 0;
@@ -236,7 +265,7 @@
   padding: 28px;
   box-sizing: border-box;
   border-radius: 25px;
-  background: #fff;
+  background: #ffffff;
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
 }
 
@@ -287,7 +316,6 @@
   accent-color: var(--primary-color);
 }
 
-/* ---------- Adaptación a celulares ---------- */
 @media (max-width: 650px) {
   .perfil-contenedor {
     padding: 18px;

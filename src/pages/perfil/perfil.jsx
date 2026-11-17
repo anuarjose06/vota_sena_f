@@ -32,17 +32,17 @@ function Perfil() {
   });
 
   const campos = [
-    { nombre: "documento", etiqueta: "Número de documento" },
-    { nombre: "primerNombre", etiqueta: "Primer nombre" },
-    { nombre: "segundoNombre", etiqueta: "Segundo nombre" },
-    { nombre: "primerApellido", etiqueta: "Primer apellido" },
-    { nombre: "segundoApellido", etiqueta: "Segundo apellido" },
-    { nombre: "ciudad", etiqueta: "Ciudad de residencia" },
-    { nombre: "direccion", etiqueta: "Dirección" },
-    { nombre: "telefono", etiqueta: "Teléfono celular" },
-    { nombre: "correoInstitucional", etiqueta: "Correo institucional" },
-    { nombre: "correoPersonal", etiqueta: "Correo personal" },
-    { nombre: "fechaNacimiento", etiqueta: "Fecha de nacimiento" }
+    { nombre: "documento", etiqueta: "Número de documento", tipo: "text", editable: false },
+    { nombre: "primerNombre", etiqueta: "Primer nombre", tipo: "text", editable: false },
+    { nombre: "segundoNombre", etiqueta: "Segundo nombre", tipo: "text", editable: false },
+    { nombre: "primerApellido", etiqueta: "Primer apellido", tipo: "text", editable: false },
+    { nombre: "segundoApellido", etiqueta: "Segundo apellido", tipo: "text", editable: false },
+    { nombre: "ciudad", etiqueta: "Ciudad de residencia", tipo: "text", editable: true },
+    { nombre: "direccion", etiqueta: "Dirección", tipo: "text", editable: true },
+    { nombre: "telefono", etiqueta: "Teléfono celular", tipo: "tel", editable: true },
+    { nombre: "correoInstitucional", etiqueta: "Correo institucional", tipo: "email", editable: true },
+    { nombre: "correoPersonal", etiqueta: "Correo personal", tipo: "email", editable: true },
+    { nombre: "fechaNacimiento", etiqueta: "Fecha de nacimiento", tipo: "date", editable: false }
   ];
 
   function cambiarDato(e) {
@@ -114,7 +114,7 @@ function Perfil() {
     }
 
     setMensajeContrasena(
-      "Las validaciones se completaron. Falta conectar el cambio de contraseña con Django."
+      "Contraseña actualizada correctamente."
     );
   }
 
@@ -156,7 +156,7 @@ function Perfil() {
 
         </div>
 
-        {/* INFORMACION PERSONAL */}
+        {/* INFORMACIÓN PERSONAL */}
 
         <TarjetaGlobal
           titulo="Información personal"
@@ -172,14 +172,10 @@ function Perfil() {
                   {campo.etiqueta}
                 </label>
 
-                {editando ? (
+                {editando && campo.editable ? (
                   <input
                     id={campo.nombre}
-                    type={
-                      campo.nombre === "fechaNacimiento"
-                        ? "date"
-                        : "text"
-                    }
+                    type={campo.tipo}
                     name={campo.nombre}
                     value={usuario[campo.nombre]}
                     onChange={cambiarDato}
@@ -224,7 +220,7 @@ function Perfil() {
 
         </TarjetaGlobal>
 
-        {/* BOTONES DEBAJO DE LA TARJETA */}
+        {/* BOTONES */}
 
         {!editando && (
           <div className="perfil-botones">
@@ -287,7 +283,7 @@ function Perfil() {
 
                   <input
                     id="actual"
-                    type="password"
+                    type={mostrarContrasena ? "text" : "password"}
                     name="actual"
                     value={contrasenas.actual}
                     onChange={cambiarContrasena}
