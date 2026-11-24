@@ -33,6 +33,16 @@ export const validateInput = (value, type) => {
         case 'password':
             // Aquí se pueden agregar validaciones específicas para la contraseña si es necesario.
             break;
+        case 'correo':
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+                return 'Ingrese un correo electrónico válido';
+            }
+            break;
+        case 'captcha':
+            if (!/^[a-zA-Z0-9]+$/.test(value)) {
+                return 'El captcha solo debe contener caracteres alfanuméricos';
+            }
+            break;
         default:
             break;
     }

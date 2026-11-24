@@ -93,7 +93,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   padding: 4px;
-  background: #eaf0e8;
   border-radius: 999px;
 }
 
