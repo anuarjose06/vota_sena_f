@@ -1,0 +1,213 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: 7rem;
+}
+
+.container-estado-y-permisos {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+}
+
+.estado-y-permisos-columna {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8fafc;
+    row-gap: 10px;
+}
+
+.main-content-estado-y-permisos {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    margin: 0;
+    padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1rem, 2.5vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem) clamp(1.25rem, 4vw, 4rem);
+    flex: 1;
+    min-width: 0; 
+}
+
+.container-princial {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    border: 1px solid red;
+    width: 70%;
+    justify-items: center;
+    margin: 0 auto;
+}
+
+/* Look-for section */
+.look-for {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+/* Look-for label y campo de input */
+.look-for label{
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: var(--font-family-heading);
+    color: var(--font-color);
+}
+
+.look-for input{
+    width: 100%;
+    padding: 13px 14px;
+    font-family: var(--font-family-text);
+    font-size: 0.95rem;
+    color: var(--font-color);
+    background: #fff;
+    border: 1.5px solid #d6dbd6;
+    border-radius: 10px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.look-for input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(57, 169, 0, 0.18);
+}
+
+.look-for-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.boton-guardar-cancelar {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 20px;
+}
+
+/* Contenedor de control de participación */
+
+.control-participacion-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+/*primera tarjeta*/
+
+.control-participacion {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    background-color: #f8fafc;
+    border: 1px solid #d6dbd6;
+    border-radius: 25px;
+}
+
+.estado-etiqueta {
+  display: inline-block;
+  width: fit-content;
+  align-self: flex-start;
+
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.estado-etiqueta.activo {
+  background-color: #dcfce7;
+  color: var(--primary-color);
+  border: 1px solid #86efac;
+}
+
+.estado-etiqueta.desactivado {
+  background-color: #fee2e2;
+  color: var(--font-color-quaternary);
+  border: 1px solid #fca5a5;
+}
+
+.resumen-estados {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 20px;
+    padding: 5px;
+}
+
+.dato-resumen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.dato-resumen span {
+    color: #94A3B8;
+}
+
+/* tarjeta de datos del aprendiz */
+
+.datos-aprendiz {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.perfil-aprendiz {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.foto-aprendiz {
+  width: 55px;          /* Mantén el ancho y alto que ya tengas definido */
+  height: 55px;
+  border-radius: 50%;
+  overflow: hidden;      /* Recorta cualquier borde que sobresalga */
+  padding: 0;            /* Evita que el ícono se encoja por márgenes internos */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Para cuando se muestra el ícono de FontAwesome */
+.foto-aprendiz svg {
+  width: 100%;
+  height: 100%;
+  color: #4b5563;        /* Opcional: ajusta el color del ícono si lo deseas */
+}
+
+/* Para cuando el aprendiz sí tiene foto */
+.foto-aprendiz img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* Evita que la foto se estire o deforme */
+}
+
+.programa-y-estado {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+
+
+
+
+
+

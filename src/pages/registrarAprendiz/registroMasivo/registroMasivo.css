@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-family-text);
+}
+
+html {
+  scroll-padding-top: 7rem;
+}
+
+.container-registro-masivo {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+}
+
+.registro-masivo-columna {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #f8fafc;
+    row-gap: 10px;
+}
+
+.main-content-registro-masivo {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+    margin: 0;
+    padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1rem, 2.5vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem) clamp(1.25rem, 4vw, 4rem);
+    flex: 1;
+    min-width: 0; 
+}
+

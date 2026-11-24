@@ -1,0 +1,28 @@
+/* Estado neutro (por defecto) */
+.boton-cambio {
+  background-color: #E0E0E0;
+  color: #333333;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+  transition: all 0.2s ease;
+}
+
+/* Efecto hover cuando pasas el mouse por encima de un botón neutro */
+.boton-cambio:hover {
+  background: var(--secondary-color); /* Un gris un poco más oscuro al pasar el mouse */
+  color: white;
+}
+
+/* Estado activo (cuando le das clic) */
+.boton-cambio.activo {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Evita que el botón activo se ponga gris al pasar el mouse */
+.boton-cambio.activo:hover {
+  background-color: var(--secondary-color);
+}
