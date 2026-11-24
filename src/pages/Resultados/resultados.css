@@ -1,0 +1,169 @@
+.res-container {
+  min-height: 100px;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
+  background-color: #f8fafc;
+  color: var(--font-color);
+}
+
+.res-columna {
+  flex: 3;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.res-main {
+  flex: 1;
+  min-width: 0;
+  padding: 40px 40px 40px 64px;
+}
+
+.res-encabezado {
+  margin-bottom: 24px;
+}
+
+.res-encabezado h1 {
+  font-size: 35px;
+  font-weight: 700;
+  padding: 3px 5px;
+  margin-bottom: 4px;
+}
+
+.res-encabezado p {
+  font-size: 18px;
+  padding: 0 5px;
+}
+
+/* Botones Representantes / Voceros */
+.res-botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 24px;
+}
+
+/* Tarjeta central */
+.res-tarjeta {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.res-total {
+  width: fit-content;
+  min-width: 180px;
+  margin-bottom: 24px;
+}
+
+.res-total strong {
+  font-size: 22px;
+}
+
+/* Gráfico de barras */
+.res-grafico {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-end;
+  gap: 40px;
+  padding: 8px 0 4px;
+  border-bottom: 1px solid #444;
+}
+
+.res-columna-barra {
+  flex: 1;
+  max-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.res-votos {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--font-color);
+  font-family: var(--font-family-text);
+}
+
+.res-barra-area {
+  width: 100%;
+  height: 280px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.res-barra {
+  width: 100%;
+  min-height: 4px;
+  background-color: #39A900;
+  border-radius: 12px 12px 0 0;
+  transition: height 0.5s ease;
+  animation: crecer-barra 0.6s ease;
+}
+
+@keyframes crecer-barra {
+  from { height: 0; }
+}
+
+.res-nombre {
+  margin-top: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  font-family: var(--font-family-heading);
+}
+
+.res-porcentaje {
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--secondary-color);
+  font-family: var(--font-family-text);
+}
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .res-main {
+    padding: 30px 25px 30px 40px;
+  }
+
+  .res-encabezado h1 {
+    font-size: 30px;
+  }
+
+  .res-encabezado p {
+    font-size: 15px;
+  }
+
+  .res-grafico {
+    gap: 30px;
+  }
+}
+
+/* Móvil */
+@media (max-width: 600px) {
+  .res-main {
+    padding: 20px 16px 20px 20px;
+  }
+
+  .res-encabezado h1 {
+    font-size: 24px;
+  }
+
+  .res-grafico {
+    gap: 12px;
+  }
+
+  .res-barra-area {
+    height: 200px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .res-barra {
+    transition: none;
+    animation: none;
+  }
+}
