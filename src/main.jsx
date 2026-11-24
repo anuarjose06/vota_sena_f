@@ -9,11 +9,10 @@ import RecoverPassword from './pages/recoverPassword/RecoverPassword.jsx'
 import RegistrarAprendiz from './pages/registrarAprendiz/registrarUnoAUno/RegistrarAprendiz.jsx'
 import RegistroMasivo from './pages/registrarAprendiz/registroMasivo/RegistroMasivo.jsx'
 import EstadoYpermisos from './pages/registrarAprendiz/estadosYpermisos/EstadoYpermisos.jsx'
-import Resultados from './pages/resultados/Resultados.jsx'
+import Resultados from './pages/Resultados/Resultados.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    
     <Resultados />
   </StrictMode>,
 )

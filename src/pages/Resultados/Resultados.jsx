@@ -4,7 +4,7 @@ import Headertop from '../../components/Header/Header.jsx'
 import Sidebar from '../../components/Sidebar/Sidebar.jsx'
 import menuBienestar from '../../components/Sidebar/menus/MenuBienestar.jsx'
 import TarjetaGlobal from '../../components/tarjetaGlobal/Tarjetaglobal.jsx'
-import BotonCambio from '../../components/BotonCambio/BotonCambio.jsx'
+import BotonCambio from "../registrarAprendiz/components/botonCambio/BotonCambio.jsx";
 
 const USUARIO = { nombre: 'Consuelo casas', rol: 'Bienestar' }
 
