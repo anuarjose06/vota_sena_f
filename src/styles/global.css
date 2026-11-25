@@ -1,0 +1,92 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body main {
+    background-color: #f8fafc;
+}
+
+/* ============ Botones de Cambio de Sección registros (Registrar Aprendiz, Carga Masiva, Estado y Permisos) ============ */
+.boton {
+    display: flex;
+    justify-content: center;
+}
+
+.boton-cambio-section {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    gap: 16px;
+}
+
+/* ============ Fin Botones de Cambio de Sección registros ============ */
+
+/* ============ Botón de Reset y submit ============ */
+.from-register form > div.boton-guardar-cancelar {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 50px;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.boton-guardar-cancelar > div {
+    flex: 1; /* Hace que ambos botones midan exactamente el 50% */
+}
+
+
+.boton-guardar-cancelar button[class='boton-submit'] {
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: #fff;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.boton-guardar-cancelar button[class='boton-submit']:hover {
+  background: var(--secondary-color);
+  color: #fff
+}
+
+.boton-guardar-cancelar button[class='boton-submit']:active {
+  transform: scale(0.98);
+}
+
+.boton-guardar-cancelar button[class='boton-submit']:focus-visible {
+  outline: 3px solid var(--secondary-color);
+  outline-offset: 3px;
+}
+
+.boton-guardar-cancelar button[class='boton-reset'] {
+  width: 100%;
+  padding: 14px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--font-color);
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.boton-guardar-cancelar button[class='boton-reset']:hover {
+  background: var(--font-color-quaternary);
+  color: #fff
+}
+
+.boton-guardar-cancelar button[class='boton-reset']:active {
+  transform: scale(0.98);
+}
+
+.boton-guardar-cancelar button[class='boton-reset']:focus-visible {
+  outline: 3px solid var(--font-color-quaternary);
+  outline-offset: 3px;
+}
+/* ============ Fin Botón de Reset y submit ============ */

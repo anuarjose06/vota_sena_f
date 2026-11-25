@@ -1,0 +1,271 @@
+.aprendiz-container,
+.aprendiz-container * {
+  box-sizing: border-box;
+}
+
+.aprendiz-container {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f6f8;
+}
+
+.aprendiz-column {
+  flex: 1;
+  min-width: 0;
+}
+
+.aprendiz-column > .bienestar-header {
+  width: calc(100% - 40px);
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.aprendiz-main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 450px), 1fr));
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1100px;
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3vw, 2.5rem) 20px;
+}
+
+.aprendiz-main > div {
+  width: 100%;
+}
+
+.aprendiz-main .bw-card {
+  width: 100%;
+  max-width: 450px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+.aprendiz-welcome {
+  grid-column: 1 / -1;
+  border: 1px solid #e2e6ea;
+  border-radius: 14px;
+  background: #fff;
+  padding: 18px 20px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.aprendiz-welcome {
+  border-left: 5px solid #39a900;
+}
+
+.aprendiz-welcome h1 {
+  font-size: 2rem;
+}
+
+.voting-deadlines {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 18px 0 12px;
+}
+
+.voting-deadline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 72px;
+  border-radius: 14px;
+  background: #e9edf1;
+  text-align: center;
+}
+
+.voting-deadline span {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.voting-deadline strong {
+  color: #111827;
+  margin-top: 4px;
+}
+
+.voting-deadline small {
+  margin-top: 2px;
+  color: #6b7280;
+  font-size: 0.88rem;
+}
+
+.voting-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  background: #e9edf1;
+  padding: 10px 20px;
+  color: #6b7280;
+}
+
+.voting-status strong {
+  color: #007832;
+  text-align: right;
+}
+
+.process-reminder {
+  margin: 14px 0;
+  border-left: 3px solid #39a900;
+  padding-left: 10px;
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.enter-voting-btn {
+  border: 0;
+  border-radius: 999px;
+  background: #39a900;
+  color: #fff;
+  cursor: pointer;
+  width: 100%;
+  padding: 12px 18px;
+  font-weight: 700;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.enter-voting-btn:hover {
+  background: #2f8d00;
+  transform: translateY(-1px);
+}
+
+.aprendiz-notice {
+  margin-top: 12px;
+  border-radius: 10px;
+  background: #fff7e6;
+  padding: 10px 12px;
+  color: #9b5c00;
+  font-weight: 600;
+}
+
+.participation-overview {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0 14px;
+}
+
+.participation-overview strong {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.participation-overview span {
+  color: #6b7280;
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+
+.participation-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 7px;
+  color: #4b5563;
+  font-size: 0.92rem;
+}
+
+.participation-heading strong {
+  color: #374151;
+}
+
+.participation-bar {
+  height: 10px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.participation-bar span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #39a900;
+}
+
+.participation-caption {
+  margin: 8px 0 20px;
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+.election-list-title {
+  margin-bottom: 4px;
+  color: #374151;
+  font-weight: 600;
+}
+
+.representative-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-top: 1px solid #edf0f2;
+}
+
+.representative-row > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.representative-row strong {
+  color: #111827;
+  font-size: 1.1rem;
+}
+
+.representative-row div span {
+  color: #6b7280;
+  font-size: 0.92rem;
+}
+
+.representative-status {
+  min-width: 74px;
+  border-radius: 999px;
+  padding: 5px 12px;
+  color: #fff;
+  text-align: center;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.representative-status.open {
+  background: #39a900;
+}
+
+.representative-status.next {
+  background: #fb923c;
+}
+
+@media (max-width: 768px) {
+  .aprendiz-main {
+    padding: 20px 16px;
+  }
+
+  .aprendiz-column > .bienestar-header {
+    width: calc(100% - 32px);
+  }
+}
+
+@media (min-width: 1025px) {
+  .aprendiz-container > .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 110;
+  }
+
+  .aprendiz-column {
+    margin-left: clamp(230px, 21vw, 310px);
+  }
+}

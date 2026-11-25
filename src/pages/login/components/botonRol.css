@@ -1,0 +1,33 @@
+
+.boton-rol {
+  position: relative;
+  padding: 10px 12px;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-weight: 600;
+  color: var(--texto-suave);
+  cursor: pointer;
+  /* CAMBIO: el texto acompaña con suavidad el desplazamiento de la pestaña. */
+  transition:
+    color 0.35s ease,
+    transform 0.25s ease;
+}
+
+.boton-rol.activo {
+  color: #fff;
+}
+
+.boton-rol:not(.activo):hover {
+  transform: translateY(-1px);
+}
+
+.boton-rol:active {
+  transform: scale(0.97);
+}
+
+.boton-rol:focus-visible {
+  outline: 3px solid var(--verde);
+  outline-offset: 2px;
+  border-radius: 999px;
+}

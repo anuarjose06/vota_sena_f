@@ -1,0 +1,24 @@
+
+/* Variables globales de color y fuente de la Web VotaSena*/
+:root {
+    --primary-color: #39A900;
+    --secondary-color: #007832;
+    --font-family-heading: 'Work Sans', 'SemiBold', sans-serif;
+    --font-family-text: 'Work Sans', 'Medium', sans-serif;
+    --font-color: #000000;
+    --font-color-secondary: #6B7280;
+    --font-color-tertiary: #39A900;
+    --font-color-quaternary: #EF4444;
+}
+
+/* Estilos globales para los títulos de la Web VotaSena */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--font-color);
+    font-family: var(--font-family-heading);
+}
+
+/* Estilos globales para los párrafos de la Web VotaSena */
+p {
+    color: var(--font-color-secondary);
+    font-family: var(--font-family-text);
+}
