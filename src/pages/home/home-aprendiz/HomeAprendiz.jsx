@@ -3,7 +3,7 @@ import HeaderTop from '../../../components/Header/Header.jsx';
 import Sidebar from '../../../components/Sidebar/Sidebar.jsx';
 import TarjetaGlobal from '../../../components/tarjetaGlobal/Tarjetaglobal.jsx';
 import './homeAprendiz.css';
-
+import menuAprendiz from '../../../components/Sidebar/menus/MenuAprendiz.jsx';
 export const HomeAprendiz = ({ userName = 'Anuar contreras' }) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [votingNotice, setVotingNotice] = useState('');
@@ -19,16 +19,14 @@ export const HomeAprendiz = ({ userName = 'Anuar contreras' }) => {
     representativeSession: "Período 2026 – Jornada diurna"
   };
 
+  const cerrarMenu = () => setMenuOpen(false);
+
   return (
     <div className="aprendiz-container">
       <Sidebar
         menuOpen={menuOpen}
-        onNavigate={() => setMenuOpen(false)}
-        links={[
-          { id: 'inicio', label: 'Inicio' },
-          { id: 'votacion', label: 'Votación' },
-          { id: 'progreso', label: 'Progreso' }
-        ]}
+        onNavigate={cerrarMenu}
+        links={menuAprendiz}
       />
       <div className="aprendiz-column">
         <HeaderTop
@@ -120,57 +118,6 @@ export const HomeAprendiz = ({ userName = 'Anuar contreras' }) => {
             </TarjetaGlobal>
           </div>
 
-          <div className="aprendiz-options">
-            <TarjetaGlobal
-              titulo="Ayuda y orientación"
-              descripcion="Encuentra respuestas y recomendaciones para participar."
-            >
-              <details className="help-disclosure">
-                <summary>
-                  <span>
-                    <strong>Guía paso a paso para votar</strong>
-                    <small>Qué hacer antes de confirmar tu voto</small>
-                  </span>
-                  <span className="option-arrow" aria-hidden="true">›</span>
-                </summary>
-                <ol className="help-steps">
-                  <li>Verifica que tu estado sea “Habilitado para votar”.</li>
-                  <li>Revisa las opciones disponibles para cada elección.</li>
-                  <li>Selecciona tus candidatos y confirma tu selección.</li>
-                  <li>Comprueba el mensaje de confirmación antes de salir.</li>
-                </ol>
-              </details>
-
-              <details className="help-disclosure">
-                <summary>
-                  <span>
-                    <strong>Preguntas frecuentes</strong>
-                    <small>Resuelve dudas sobre tu participación</small>
-                  </span>
-                  <span className="option-arrow" aria-hidden="true">›</span>
-                </summary>
-                <div className="help-faq">
-                  <strong>¿Puedo cambiar mi voto?</strong>
-                  <p>No. Una vez confirmado, el voto no se puede modificar.</p>
-                  <strong>¿Qué hago si aparece un error?</strong>
-                  <p>Comunícate con el área de Bienestar al Aprendiz de tu centro.</p>
-                </div>
-              </details>
-
-              <details className="help-disclosure">
-                <summary>
-                  <span>
-                    <strong>Soporte de Bienestar al Aprendiz</strong>
-                    <small>Ayuda con tus datos o con el proceso</small>
-                  </span>
-                  <span className="option-arrow" aria-hidden="true">›</span>
-                </summary>
-                <p className="help-support">
-                  Si encuentras un error, comunícate con Bienestar al Aprendiz de tu centro e indica qué inconveniente presentas. No compartas tu contraseña.
-                </p>
-              </details>
-            </TarjetaGlobal>
-          </div>
         </main>
       </div>
     </div>

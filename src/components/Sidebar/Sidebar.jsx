@@ -2,7 +2,6 @@ import { useState } from 'react'
 import logoSena from '../../assets/images/logo.png'
 import './sidebar.css'
 
-
 export default function Sidebar({
   menuOpen = false,
   onNavigate = () => {},
