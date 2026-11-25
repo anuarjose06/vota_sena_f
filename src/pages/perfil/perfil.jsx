@@ -1,13 +1,19 @@
 import { useState } from "react";
 import "./Perfil.css";
+
 import TarjetaGlobal from "../../components/tarjetaGlobal/Tarjetaglobal";
+import CambiarContrasena from "./components/cambiarContrasena";
+import EncabezadoPerfil from "../../components/EncabezadoPerfil";
+
+import Headertop from "../../components/header/Header";
+import Sidebar from "../../components/sidebar/Sidebar";
 
 function Perfil() {
   const [editando, setEditando] = useState(false);
   const [modalContrasena, setModalContrasena] = useState(false);
   const [mensaje, setMensaje] = useState("");
-  const [mensajeContrasena, setMensajeContrasena] = useState("");
-  const [mostrarContrasena, setMostrarContrasena] = useState(false);
+  const [foto, setFoto] = useState(null);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const [usuario, setUsuario] = useState({
     documento: "10234579",
@@ -24,12 +30,6 @@ function Perfil() {
   });
 
   const [usuarioOriginal, setUsuarioOriginal] = useState({});
-
-  const [contrasenas, setContrasenas] = useState({
-    actual: "",
-    nueva: "",
-    confirmar: ""
-  });
 
   const campos = [
     { nombre: "documento", etiqueta: "Número de documento", tipo: "text", editable: false },
@@ -52,13 +52,6 @@ function Perfil() {
     });
   }
 
-  function cambiarContrasena(e) {
-    setContrasenas({
-      ...contrasenas,
-      [e.target.name]: e.target.value
-    });
-  }
-
   function iniciarEdicion() {
     setUsuarioOriginal({ ...usuario });
     setMensaje("");
@@ -77,296 +70,149 @@ function Perfil() {
     setMensaje("Información guardada correctamente.");
   }
 
-  function cerrarModal() {
-    setModalContrasena(false);
-    setMensajeContrasena("");
-    setMostrarContrasena(false);
+  function seleccionarFoto(archivo) {
+    const lector = new FileReader();
 
-    setContrasenas({
-      actual: "",
-      nueva: "",
-      confirmar: ""
-    });
-  }
+    lector.onload = () => {
+      setFoto(lector.result);
+    };
 
-  function actualizarContrasena(e) {
-    e.preventDefault();
-
-    if (
-      contrasenas.actual === "" ||
-      contrasenas.nueva === "" ||
-      contrasenas.confirmar === ""
-    ) {
-      setMensajeContrasena("Completa todos los campos.");
-      return;
-    }
-
-    if (contrasenas.nueva.length < 8) {
-      setMensajeContrasena(
-        "La nueva contraseña debe tener mínimo 8 caracteres."
-      );
-      return;
-    }
-
-    if (contrasenas.nueva !== contrasenas.confirmar) {
-      setMensajeContrasena("Las contraseñas no coinciden.");
-      return;
-    }
-
-    setMensajeContrasena(
-      "Contraseña actualizada correctamente."
-    );
+    lector.readAsDataURL(archivo);
   }
 
   return (
-    <div className="perfil-contenedor">
+    <>
+      <Headertop
+        menuOpen={menuOpen}
+        toggleMenu={() => setMenuOpen(!menuOpen)}
+      />
 
-      {/* TITULO */}
+      <div className="layout-principal">
 
-      <div className="perfil-titulo">
-        <h1>Mi perfil</h1>
-        <p>Consulta y administra tu información personal.</p>
-      </div>
+        <Sidebar
+          menuOpen={menuOpen}
+          onNavigate={() => setMenuOpen(false)}
+        />
 
-      <div className="perfil-tarjeta">
+        <main className="contenido-principal">
 
-        {/* CABECERA */}
+          <div className="perfil-contenedor">
 
-        <div className="perfil-cabecera">
+            <div className="perfil-titulo">
+              <h1>Mi perfil</h1>
+              <p>Consulta y administra tu información personal.</p>
+            </div>
 
-          <div className="perfil-foto">
-            <span>
-              {usuario.primerNombre
-                ? usuario.primerNombre.charAt(0).toUpperCase()
-                : "U"}
-              {usuario.primerApellido
-                ? usuario.primerApellido.charAt(0).toUpperCase()
-                : ""}
-            </span>
-          </div>
+            <div className="perfil-tarjeta">
 
-          <div className="perfil-identidad">
-            <h2>
-              {usuario.primerNombre || "Nombre del usuario"}{" "}
-              {usuario.primerApellido}
-            </h2>
-            <p>Información personal de VotaSena</p>
-            <span className="perfil-estado">Cuenta activa</span>
-          </div>
+              <EncabezadoPerfil
+                nombre={`${usuario.primerNombre} ${usuario.primerApellido}`}
+                descripcion="Información personal de VotaSena"
+                estado="Cuenta activa"
+                foto={foto}
+                onFotoChange={seleccionarFoto}
+              />
 
-        </div>
+              <TarjetaGlobal
+                titulo="Información personal"
+                descripcion="Consulta y administra tus datos personales."
+              >
 
-        {/* INFORMACIÓN PERSONAL */}
+                <div className="perfil-formulario">
 
-        <TarjetaGlobal
-          titulo="Información personal"
-          descripcion="Consulta y administra tus datos personales."
-        >
+                  {campos.map((campo) => (
+                    <div className="perfil-campo" key={campo.nombre}>
 
-          <div className="perfil-formulario">
+                      <label htmlFor={campo.nombre}>
+                        {campo.etiqueta}
+                      </label>
 
-            {campos.map((campo) => (
-              <div className="perfil-campo" key={campo.nombre}>
+                      {editando && campo.editable ? (
+                        <input
+                          id={campo.nombre}
+                          type={campo.tipo}
+                          name={campo.nombre}
+                          value={usuario[campo.nombre]}
+                          onChange={cambiarDato}
+                          placeholder="Ingresa tu información"
+                        />
+                      ) : (
+                        <p className="perfil-valor">
+                          {usuario[campo.nombre] || "No registrado"}
+                        </p>
+                      )}
 
-                <label htmlFor={campo.nombre}>
-                  {campo.etiqueta}
-                </label>
+                    </div>
+                  ))}
 
-                {editando && campo.editable ? (
-                  <input
-                    id={campo.nombre}
-                    type={campo.tipo}
-                    name={campo.nombre}
-                    value={usuario[campo.nombre]}
-                    onChange={cambiarDato}
-                    placeholder="Ingresa tu información"
-                  />
-                ) : (
-                  <p className="perfil-valor">
-                    {usuario[campo.nombre] || "No registrado"}
+                </div>
+
+                {mensaje && (
+                  <p className="perfil-mensaje">
+                    {mensaje}
                   </p>
                 )}
 
-              </div>
-            ))}
+                {editando && (
+                  <div className="perfil-acciones">
 
-          </div>
+                    <button
+                      type="button"
+                      className="perfil-btn-secundario"
+                      onClick={cancelarEdicion}
+                    >
+                      Cancelar
+                    </button>
 
-          {mensaje && (
-            <p className="perfil-mensaje">{mensaje}</p>
-          )}
+                    <button
+                      type="button"
+                      className="perfil-btn-principal"
+                      onClick={actualizarInformacion}
+                    >
+                      Guardar cambios
+                    </button>
 
-          {editando && (
-            <div className="perfil-acciones">
+                  </div>
+                )}
 
-              <button
-                type="button"
-                className="perfil-btn-secundario"
-                onClick={cancelarEdicion}
-              >
-                Cancelar
-              </button>
+              </TarjetaGlobal>
 
-              <button
-                type="button"
-                className="perfil-btn-principal"
-                onClick={actualizarInformacion}
-              >
-                Guardar cambios
-              </button>
+              {!editando && (
+                <div className="perfil-botones">
 
-            </div>
-          )}
+                  <button
+                    type="button"
+                    className="perfil-btn-principal"
+                    onClick={iniciarEdicion}
+                  >
+                    Actualizar información
+                  </button>
 
-        </TarjetaGlobal>
+                  <button
+                    type="button"
+                    className="perfil-btn-secundario"
+                    onClick={() => setModalContrasena(true)}
+                  >
+                    Cambiar contraseña
+                  </button>
 
-        {/* BOTONES */}
-
-        {!editando && (
-          <div className="perfil-botones">
-
-            <button
-              type="button"
-              className="perfil-btn-principal"
-              onClick={iniciarEdicion}
-            >
-              Actualizar información
-            </button>
-
-            <button
-              type="button"
-              className="perfil-btn-secundario"
-              onClick={() => {
-                setMensajeContrasena("");
-                setModalContrasena(true);
-              }}
-            >
-              Cambiar contraseña
-            </button>
-
-          </div>
-        )}
-
-      </div>
-
-      {/* VENTANA PARA CAMBIAR CONTRASEÑA */}
-
-      {modalContrasena && (
-        <div className="perfil-modal-fondo">
-
-          <div className="perfil-modal">
-
-            <div className="perfil-modal-cabecera">
-              <h2>Cambiar contraseña</h2>
-
-              <button
-                type="button"
-                className="perfil-modal-cerrar"
-                onClick={cerrarModal}
-              >
-                ×
-              </button>
-            </div>
-
-            <p>
-              Ingresa tu contraseña actual y establece una nueva.
-            </p>
-
-            <form onSubmit={actualizarContrasena}>
-
-              <div className="perfil-formulario">
-
-                <div className="perfil-campo">
-                  <label htmlFor="actual">
-                    Contraseña actual
-                  </label>
-
-                  <input
-                    id="actual"
-                    type={mostrarContrasena ? "text" : "password"}
-                    name="actual"
-                    value={contrasenas.actual}
-                    onChange={cambiarContrasena}
-                    placeholder="Ingresa tu contraseña actual"
-                  />
                 </div>
-
-                <div className="perfil-campo">
-                  <label htmlFor="nueva">
-                    Nueva contraseña
-                  </label>
-
-                  <input
-                    id="nueva"
-                    type={mostrarContrasena ? "text" : "password"}
-                    name="nueva"
-                    value={contrasenas.nueva}
-                    onChange={cambiarContrasena}
-                    placeholder="Ingresa tu nueva contraseña"
-                  />
-                </div>
-
-                <div className="perfil-campo">
-                  <label htmlFor="confirmar">
-                    Confirmar nueva contraseña
-                  </label>
-
-                  <input
-                    id="confirmar"
-                    type={mostrarContrasena ? "text" : "password"}
-                    name="confirmar"
-                    value={contrasenas.confirmar}
-                    onChange={cambiarContrasena}
-                    placeholder="Confirma tu nueva contraseña"
-                  />
-                </div>
-
-              </div>
-
-              <label className="perfil-mostrar-contrasena">
-                <input
-                  type="checkbox"
-                  checked={mostrarContrasena}
-                  onChange={(e) =>
-                    setMostrarContrasena(e.target.checked)
-                  }
-                />
-                Mostrar contraseñas
-              </label>
-
-              {mensajeContrasena && (
-                <p className="perfil-mensaje">
-                  {mensajeContrasena}
-                </p>
               )}
 
-              <div className="perfil-acciones">
+            </div>
 
-                <button
-                  type="button"
-                  className="perfil-btn-secundario"
-                  onClick={cerrarModal}
-                >
-                  Cancelar
-                </button>
-
-                <button
-                  type="submit"
-                  className="perfil-btn-principal"
-                >
-                  Guardar contraseña
-                </button>
-
-              </div>
-
-            </form>
+            {modalContrasena && (
+              <CambiarContrasena
+                onCerrar={() => setModalContrasena(false)}
+              />
+            )}
 
           </div>
 
-        </div>
-      )}
+        </main>
 
-    </div>
+      </div>
+    </>
   );
 }
 
