@@ -10,9 +10,10 @@ import RegistrarAprendiz from './pages/registrarAprendiz/registrarUnoAUno/Regist
 import RegistroMasivo from './pages/registrarAprendiz/registroMasivo/RegistroMasivo.jsx'
 import EstadoYpermisos from './pages/registrarAprendiz/estadosYpermisos/EstadoYpermisos.jsx'
 import Resultados from './pages/Resultados/Resultados.jsx'
+import RegistrarInstructor from './pages/registrarInstructor/RegistrarInstructor.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <Resultados />
+  <Resultados/>
   </StrictMode>,
 )

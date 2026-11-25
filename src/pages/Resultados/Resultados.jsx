@@ -31,19 +31,12 @@ const formatear = (n) => n.toLocaleString('es-CO')
 
 function Resultados() {
   const [menuOpen, setMenuOpen] = useState(false)
-
   const [opcionActiva, setOpcionActiva] = useState(opciones[0].id)
-
   const toggleMenu = () => setMenuOpen((v) => !v)
-
   const cerrarMenu = () => setMenuOpen(false)
-
   const candidatos = RESULTADOS[opcionActiva]
-
   const totalVotos = candidatos.reduce((suma, c) => suma + c.votos, 0)
-
   const maxVotos = Math.max(...candidatos.map((c) => c.votos), 1)
-  
   const textoOpcion = opciones.find((o) => o.id === opcionActiva).texto
 
   return (
@@ -98,7 +91,7 @@ function Resultados() {
                 {candidatos.map((c) => {
                   const porcentaje = (c.votos / totalVotos) * 100
                   return (
-                    <div className="res-columna-barra" key={c.id}>
+                    <div className={`res-columna-barra candidato-${c.id}`} key={c.id}>
                       <span className="res-votos">{formatear(c.votos)}</span>
                       <div className="res-barra-area">
                         <div
