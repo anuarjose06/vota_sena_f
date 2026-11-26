@@ -6,21 +6,15 @@ export const usuariosMock = [
         segundoNombre: "Andres",
         primerApellido: "Rodriguez",
         segundoApellido: "Perez",
-
         tipoDocumento: "CC",
         numeroDocumento: "1023456789",
-
         correoPersonal: "daniel@gmail.com",
         correoInstitucional: "daniel@soy.sena.edu.co",
-
         ficha: "228118",
         direccion: "Calle 10 # 15-20",
         celular: "3101234567",
-
         centro: "Centro Industrial y de Desarrollo Empresarial",
-
         foto: null,
-
         estado: "Activo"
     },
 

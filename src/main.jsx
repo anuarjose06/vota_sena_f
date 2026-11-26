@@ -11,9 +11,10 @@ import RegistroMasivo from './pages/registrarAprendiz/registroMasivo/RegistroMas
 import EstadoYpermisos from './pages/registrarAprendiz/estadosYpermisos/EstadoYpermisos.jsx'
 import Resultados from './pages/Resultados/Resultados.jsx'
 import RegistrarInstructor from './pages/registrarInstructor/RegistrarInstructor.jsx'
+import Postulacion from './pages/Postulaciones/Postulacion.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-  <Resultados/>
+  <Postulacion/>
   </StrictMode>,
 )
